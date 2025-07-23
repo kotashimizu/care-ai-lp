@@ -95,21 +95,18 @@ function showQuestion() {
     const container = document.getElementById('questionContainer');
     const question = diagnosisQuestions[currentQuestion];
     
-    // 診断フォームを表示、結果を非表示
-    document.getElementById('diagnosisForm').style.display = 'block';
-    document.getElementById('diagnosisResult').style.display = 'none';
+    // 結果コンテナを非表示
+    document.getElementById('resultContainer').style.display = 'none';
     
     container.innerHTML = `
-        <div class="question active">
-            <h3>${question.question}</h3>
-            <div class="question-options">
-                ${question.options.map((option, index) => `
-                    <div class="option" onclick="selectAnswer('${option.value}', ${index})">
-                        <strong>${option.text}</strong>
-                        <br><small>${option.description}</small>
-                    </div>
-                `).join('')}
-            </div>
+        <div class="question-title">${question.question}</div>
+        <div class="answer-options">
+            ${question.options.map((option, index) => `
+                <div class="answer-option" onclick="selectAnswer('${option.value}', ${index})">
+                    <h4>${option.text}</h4>
+                    <p>${option.description}</p>
+                </div>
+            `).join('')}
         </div>
     `;
     
@@ -118,7 +115,7 @@ function showQuestion() {
 
 function selectAnswer(value, index) {
     // 選択状態の表示
-    const options = document.querySelectorAll('.option');
+    const options = document.querySelectorAll('.answer-option');
     options.forEach(option => option.classList.remove('selected'));
     options[index].classList.add('selected');
     
@@ -201,9 +198,9 @@ function calculateResult() {
 function showResult() {
     const result = calculateResult();
     
-    // フォームを非表示、結果を表示
-    document.getElementById('diagnosisForm').style.display = 'none';
-    document.getElementById('diagnosisResult').style.display = 'block';
+    // 質問コンテナを非表示、結果を表示
+    document.getElementById('questionContainer').style.display = 'none';
+    document.getElementById('resultContainer').style.display = 'block';
     
     const results = {
         immediate: {
@@ -261,32 +258,21 @@ function showResult() {
     };
     
     const resultData = results[result];
-    const resultContainer = document.getElementById('diagnosisResult');
-    
-    // スコアに応じたクラス名を決定
-    let scoreClass = 'score-' + result.replace('_', '-');
+    const resultContainer = document.getElementById('resultContainer');
     
     resultContainer.innerHTML = `
-        <div class="result-header">
-            <h3 class="result-title">${resultData.title}</h3>
-            <div class="result-score ${scoreClass}">
-                ${resultData.icon} ${result === 'immediate' ? '最優先' : 
-                  result === 'recommended' ? '推奨' : 
-                  result === 'consider' ? '検討' : '不要'}
-            </div>
-        </div>
-        <div class="result-content">
-            <p>${resultData.description}</p>
-            <div class="result-recommendations">
-                <h4>おすすめのアクション</h4>
-                <ul>
-                    ${resultData.recommendations.map(rec => `<li>${rec}</li>`).join('')}
-                </ul>
-            </div>
+        <div class="result-icon">${resultData.icon}</div>
+        <div class="result-title">${resultData.title}</div>
+        <div class="result-description">${resultData.description}</div>
+        <div class="result-recommendations">
+            <h4>おすすめのアクション</h4>
+            <ul>
+                ${resultData.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+            </ul>
         </div>
         <div class="result-actions">
-            <a href="${resultData.ctaLink}" class="btn-primary">${resultData.cta}</a>
-            <button class="btn-outline" onclick="startDiagnosis()" style="margin-left: 1rem;">もう一度診断する</button>
+            <a href="${resultData.ctaLink}" class="btn btn-primary">${resultData.cta}</a>
+            <a href="#" class="restart-diagnosis" onclick="startDiagnosis()">もう一度診断する</a>
         </div>
     `;
     
