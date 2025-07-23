@@ -27,12 +27,12 @@
 
 ## 🎨 デザインシステム
 
-### カラーパレット
-- **Primary Blue**: `#1A73E8` - メインCTA・重要テキスト
-- **Healthcare Teal**: `#17BEBB` - アクセント・強調
+### カラーパレット（ICHI準拠）
+- **Primary Navy**: `#1A2B4C` - メインカラー・重要テキスト
+- **Accent Teal**: `#00A99D` - アクセント・強調・CTA
 - **Success Green**: `#3BB273` - 効果・改善
 - **Warning Red**: `#E53E3E` - 問題・課題
-- **Warm Grey**: `#F5F7FA` - 背景
+- **Warm Grey**: `#F5F7FA` - 背景・補助色
 - **Charcoal**: `#333333` - 本文テキスト
 
 ### タイポグラフィ
