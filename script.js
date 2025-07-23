@@ -70,16 +70,6 @@ const diagnosisQuestions = [
             { text: "使いたくない", value: "negative", description: "人の手で行いたい" }
         ]
     },
-    {
-        id: 8,
-        question: "業務効率化への投資予算は？",
-        options: [
-            { text: "月額5万円以上", value: "high", description: "効率化に積極投資" },
-            { text: "月額1-5万円", value: "medium", description: "適度な投資は可能" },
-            { text: "月額1万円未満", value: "low", description: "予算は限られている" },
-            { text: "予算はない", value: "none", description: "無料でないと難しい" }
-        ]
-    }
 ];
 
 let currentQuestion = 0;
@@ -147,7 +137,6 @@ function calculateResult() {
     let timeScore = 0;
     let needScore = 0;
     let readinessScore = 0;
-    let budgetScore = 0;
     
     // 時間の問題度
     if (answers[1] === 'slow') timeScore = 3;
@@ -180,18 +169,12 @@ function calculateResult() {
     else if (answers[7] === 'curious') readinessScore += 1;
     else if (answers[7] === 'negative') readinessScore -= 2;
     
-    // 予算
-    if (answers[8] === 'high') budgetScore = 3;
-    else if (answers[8] === 'medium') budgetScore = 2;
-    else if (answers[8] === 'low') budgetScore = 1;
-    else budgetScore = 0;
+    const totalScore = timeScore + needScore + readinessScore;
     
-    const totalScore = timeScore + needScore + readinessScore + budgetScore;
-    
-    // 結果判定
-    if (totalScore >= 10) return 'immediate';
-    else if (totalScore >= 6) return 'recommended';
-    else if (totalScore >= 3) return 'consider';
+    // 結果判定（7問に調整）
+    if (totalScore >= 8) return 'immediate';
+    else if (totalScore >= 5) return 'recommended';
+    else if (totalScore >= 2) return 'consider';
     else return 'not_needed';
 }
 
@@ -204,7 +187,7 @@ function showResult() {
     
     const results = {
         immediate: {
-            icon: '🚀',
+            icon: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" width="80" height="80"><polygon fill="currentColor" points="386.415,193.208 287.481,193.208 359.434,0 161.566,0 125.585,280.151 206.528,280.151 170.557,512 "/></svg>',
             title: '今すぐ導入をおすすめします！',
             description: 'あなたの事業所は、AI導入による効果を最大限に活用できる環境が整っています。厚労省準拠の計画書作成で大幅な効率化が期待できます。',
             recommendations: [
@@ -217,7 +200,7 @@ function showResult() {
             ctaLink: '#contact'
         },
         recommended: {
-            icon: '✨',
+            icon: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px" height="512px" viewBox="0 0 512 512" xml:space="preserve" width="80" height="80"><polygon fill="currentColor" points="403.797,256 481.188,121.953 326.406,121.953 256,0 185.594,121.953 30.813,121.953 108.203,256 30.813,390.047 185.594,390.047 256,512 326.406,390.047 481.188,390.047 "/></svg>',
             title: 'AI導入をおすすめします',
             description: '現在の課題解決にAIが効果的です。厚労省準拠の品質向上と業務効率化を同時に実現できるでしょう。',
             recommendations: [
@@ -230,7 +213,7 @@ function showResult() {
             ctaLink: '#contact'
         },
         consider: {
-            icon: '🤔',
+            icon: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" width="80" height="80"><path fill="currentColor" d="M256,512C114.6,512,0,397.4,0,256S114.6,0,256,0s256,114.6,256,256S397.4,512,256,512z M256,25.6C128.8,25.6,25.6,128.8,25.6,256S128.8,486.4,256,486.4S486.4,383.2,486.4,256S383.2,25.6,256,25.6z M281.6,256c0,14.1-11.5,25.6-25.6,25.6s-25.6-11.5-25.6-25.6s11.5-25.6,25.6-25.6S281.6,241.9,281.6,256z M345.6,128c7.1,7.1,7.1,18.4,0,25.6l-64,64c-7.1,7.1-18.4,7.1-25.6,0c-7.1-7.1-7.1-18.4,0-25.6l64-64C327.2,120.9,338.5,120.9,345.6,128z M153.6,358.4c-7.1-7.1-7.1-18.4,0-25.6l64-64c7.1-7.1,18.4-7.1,25.6,0c7.1,7.1,7.1,18.4,0,25.6l-64,64C172.1,365.5,160.7,365.5,153.6,358.4z M89.6,281.6c-10.6,0-19.2-8.6-19.2-19.2s8.6-19.2,19.2-19.2h128c10.6,0,19.2,8.6,19.2,19.2s-8.6,19.2-19.2,19.2H89.6z M275.2,217.6c10.6,0,19.2,8.6,19.2,19.2v128c0,10.6-8.6,19.2-19.2,19.2s-19.2-8.6-19.2-19.2v-128C256,226.2,264.6,217.6,275.2,217.6z"/></svg>',
             title: '導入を検討してみませんか？',
             description: '現状でも運用できていますが、AI導入により更なる効率化と品質向上が可能です。まずは情報収集から始めてみましょう。',
             recommendations: [
@@ -243,7 +226,7 @@ function showResult() {
             ctaLink: '#contact'
         },
         not_needed: {
-            icon: '😊',
+            icon: '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve" width="80" height="80"><path fill="currentColor" d="M256,32C132.3,32,32,132.3,32,256c0,47.2,14.6,91.1,39.5,127.4L32,480l96.6-39.5C164.9,465.4,208.8,480,256,480c123.7,0,224-100.3,224-224S379.7,32,256,32z M384,288H128v-32h256V288z M384,224H128v-32h256V224z M384,160H128v-32h256V160z"/></svg>',
             title: '現状維持で問題ありません',
             description: '現在の業務フローで十分に効率的に運用されています。今すぐAI導入の必要性は低いと判断されます。',
             recommendations: [
@@ -285,6 +268,9 @@ function showResult() {
 document.addEventListener('DOMContentLoaded', function() {
     const startBtn = document.getElementById('startDiagnosisBtn');
     const finalBtn = document.getElementById('finalDiagnosisBtn');
+    
+    // ページ読み込み時に診断を自動開始
+    startDiagnosis();
     
     if (startBtn) {
         startBtn.addEventListener('click', function() {

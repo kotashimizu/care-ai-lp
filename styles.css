@@ -141,8 +141,14 @@ body {
 }
 
 .problem-icon {
-    font-size: 40px;
     flex-shrink: 0;
+    color: #1A2B4C;
+}
+
+.problem-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: currentColor;
 }
 
 /* 解決策セクション */
@@ -316,8 +322,14 @@ body {
 }
 
 .result-icon {
-    font-size: 80px;
     margin-bottom: 24px;
+    color: #1A2B4C;
+}
+
+.result-icon svg {
+    width: 80px;
+    height: 80px;
+    fill: currentColor;
 }
 
 .result-title {
@@ -407,8 +419,14 @@ body {
 }
 
 .feature-icon {
-    font-size: 48px;
     margin-bottom: 20px;
+    color: #1A2B4C;
+}
+
+.feature-icon svg {
+    width: 48px;
+    height: 48px;
+    fill: currentColor;
 }
 
 .feature h3 {
@@ -423,67 +441,232 @@ body {
     background-color: white;
 }
 
-.results-comparison {
+/* メトリクスショーケース */
+.metrics-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.metric-card {
+    background: linear-gradient(135deg, #1A2B4C 0%, #00A99D 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(26, 43, 76, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-number {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.metric-detail {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* プロフェッショナル比較 */
+.comparison-professional {
+    margin-bottom: 60px;
+}
+
+.comparison-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.comparison-header h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.comparison-column {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.comparison-title {
+    padding: 24px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.before-title {
+    background-color: #FFF5F5;
+    color: #1A2B4C;
+    border-left: 4px solid #E53E3E;
+}
+
+.after-title {
+    background-color: #F0FFF4;
+    color: #1A2B4C;
+    border-left: 4px solid #00A99D;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.before-indicator {
+    background-color: #E53E3E;
+}
+
+.after-indicator {
+    background-color: #00A99D;
+}
+
+.comparison-content {
+    padding: 30px;
+}
+
+.time-display {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #1A2B4C;
+}
+
+.time-display.success {
+    color: #00A99D;
+}
+
+.process-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.process-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+}
+
+.process-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.process-icon.negative {
+    background-color: #FED7D7;
+    color: #E53E3E;
+}
+
+.process-icon.positive {
+    background-color: #C6F6D5;
+    color: #00A99D;
+}
+
+.comparison-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+/* プロフェッショナル推薦文 */
+.testimonial-professional {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.before-after {
+.testimonial-content {
+    background: linear-gradient(135deg, #F5F7FA 0%, #E8F4FD 100%);
+    padding: 50px;
+    border-radius: 16px;
+    position: relative;
+    border-left: 4px solid #00A99D;
+}
+
+.quote-icon {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 48px;
+    color: #00A99D;
+    font-family: Georgia, serif;
+    opacity: 0.3;
+}
+
+.testimonial-content blockquote {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #1A2B4C;
+    margin-bottom: 30px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.testimonial-author {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 60px;
-    flex-wrap: wrap;
+    gap: 16px;
 }
 
-.before, .after {
+.author-info {
     flex: 1;
-    min-width: 250px;
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
 }
 
-.before {
-    background-color: #FFE5E5;
-    border: 2px solid #E53E3E;
+.author-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1A2B4C;
+    margin-bottom: 4px;
 }
 
-.after {
-    background-color: #E5F5E5;
-    border: 2px solid #3BB273;
-}
-
-.time {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 20px 0;
-}
-
-.arrow {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1A73E8;
-}
-
-.testimonial {
-    background-color: #F5F7FA;
-    padding: 40px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-blockquote {
-    font-size: 18px;
-    font-style: italic;
-    margin-bottom: 20px;
-    color: #333333;
-}
-
-cite {
-    color: #666666;
+.author-company {
     font-size: 14px;
+    color: #666666;
 }
 
 /* 料金セクション */
@@ -767,6 +950,13 @@ cite {
 .contact-method h3 {
     font-size: 20px;
     margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-method h3 svg {
+    fill: currentColor;
 }
 
 .contact-info {
@@ -836,12 +1026,34 @@ cite {
         flex-direction: column;
     }
     
-    .before-after {
-        flex-direction: column;
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
-    .arrow {
+    .comparison-arrow {
         transform: rotate(90deg);
+    }
+    
+    .metrics-showcase {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .metric-card {
+        padding: 30px 20px;
+    }
+    
+    .metric-number {
+        font-size: 36px;
+    }
+    
+    .testimonial-content {
+        padding: 30px 20px;
+    }
+    
+    .testimonial-content blockquote {
+        font-size: 18px;
     }
     
     .profile {
