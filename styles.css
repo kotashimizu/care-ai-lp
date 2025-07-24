@@ -676,8 +676,8 @@ body {
 }
 
 .pricing-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 40px;
     max-width: 1000px;
     margin: 0 auto;
@@ -689,6 +689,8 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.15s ease;
+    width: 600px;
+    max-width: 600px;
 }
 
 .pricing-card:hover {
@@ -863,6 +865,14 @@ body {
 
 .profile-image {
     flex-shrink: 0;
+}
+
+.profile-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .image-placeholder {
@@ -1068,6 +1078,17 @@ body {
     
     .footer-contact {
         text-align: center;
+    }
+    
+    /* 料金カード - モバイル対応 */
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        max-width: 400px;
     }
 }
 
