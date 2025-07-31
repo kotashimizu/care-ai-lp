@@ -94,28 +94,28 @@ Shield with lock symbol, data protection icon, security and privacy, professiona
 ## 【技術仕様】
 
 ### ファイル形式
-- **写真系**: WebP (フォールバック: JPG)
-- **アイコン系**: SVG (インライン推奨)
+- **写真系**: PNG (Midjourney出力)
+- **アイコン系**: SVG (インライン実装済み)
 
 ### サイズ最適化
-- **ヒーロー背景**: 1920x1080px (WebP, 80%品質)
-- **アイコン**: 64x64px (SVG)
-- **比較画像**: 800x450px (WebP, 85%品質)
-- **プロフィール**: 400x500px (WebP, 90%品質)
+- **ヒーロー背景**: 1920x1080px (PNG)
+- **アイコン**: 64x64px (SVG - 実装済み)
+- **比較画像**: 800x450px (PNG)
+- **プロフィール**: 400x500px (PNG)
 
 ### 命名規則
 ```
-hero-background.webp
-step-1-input.svg
-step-2-ai.svg  
-step-3-complete.svg
-before-traditional.webp
-after-efficient.webp
-profile-developer.webp
-icon-compliance.svg
-icon-speed.svg
-icon-security.svg
+hero-background.png
+before-traditional.png
+after-efficient.png
+profile-developer.png
 ```
+
+### 実装状況
+- ✅ **3ステップアイコン**: SVGで実装済み
+- 🔄 **ヒーロー背景**: PNG対応CSS準備完了
+- ⏳ **比較画像**: プロンプト準備完了
+- ⏳ **プロフィール画像**: プロンプト準備完了
 
 ---
 

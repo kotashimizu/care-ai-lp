@@ -20,13 +20,12 @@ body {
 
 /* ヒーローセクション */
 .hero {
-    background: linear-gradient(135deg, rgba(26, 43, 76, 0.8) 0%, rgba(0, 169, 157, 0.8) 100%);
-    /* 背景画像準備 - 画像追加時にコメントアウト外す
-    background-image: url('hero-background.webp');
+    background-image: 
+        linear-gradient(135deg, rgba(26, 43, 76, 0.8) 0%, rgba(0, 169, 157, 0.8) 100%),
+        url('hero-background.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    */
     color: white;
     padding: 100px 0;
     text-align: center;
@@ -1336,25 +1335,31 @@ body {
 }
 
 .footer-links {
-    text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    margin: 20px 0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
-.footer-links a {
-    color: white;
+.footer-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-nav ul li a {
+    color: #ffffff;
     text-decoration: none;
-    margin: 0 20px;
     font-size: 14px;
-    transition: opacity 0.15s ease;
+    transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-    opacity: 0.7;
+.footer-nav ul li a:hover {
+    color: #00A99D;
     text-decoration: underline;
 }
+
 
 .footer-copyright {
     text-align: center;
@@ -1435,10 +1440,9 @@ body {
         text-align: center;
     }
     
-    .footer-links a {
-        margin: 0 10px;
-        display: inline-block;
-        margin-bottom: 5px;
+    .footer-nav ul {
+        flex-direction: column;
+        gap: 15px;
     }
     
     /* 料金カード - モバイル対応 */
