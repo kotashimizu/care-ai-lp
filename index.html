@@ -446,7 +446,7 @@
                         
                         <form class="contact-form" action="https://ssgform.com/s/fZSyADGXpLEG" method="post">
                             <!-- 送信後のリダイレクト先（任意） -->
-                            <input type="hidden" name="@redirect" value="https://kotashimizu.github.io/care-ai-lp/#thank-you">
+                            <input type="hidden" name="@redirect" value="https://kotashimizu.github.io/care-ai-lp/?thanks=true">
                             
                             <div class="form-row">
                                 <div class="form-group">
@@ -519,18 +519,27 @@
     
     <!-- SSSGform送信後のサンクスページ表示 -->
     <script>
-        // URLハッシュでサンクスページを表示
-        function checkThankYouHash() {
-            if (window.location.hash === '#thank-you') {
+        // URLパラメータまたはハッシュでサンクスページを表示
+        function checkThankYouPage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasThankYouParam = urlParams.get('thanks') === 'true';
+            const hasThankYouHash = window.location.hash === '#thank-you';
+            
+            if (hasThankYouParam || hasThankYouHash) {
                 document.getElementById('thank-you').style.display = 'block';
                 // ページトップにスクロール
                 window.scrollTo(0, 0);
+                // URLを綺麗にする（パラメータを削除）
+                if (hasThankYouParam) {
+                    const newUrl = window.location.origin + window.location.pathname + '#thank-you';
+                    window.history.replaceState({}, '', newUrl);
+                }
             }
         }
         
         // ページ読み込み時とハッシュ変更時にチェック
-        window.addEventListener('load', checkThankYouHash);
-        window.addEventListener('hashchange', checkThankYouHash);
+        window.addEventListener('load', checkThankYouPage);
+        window.addEventListener('hashchange', checkThankYouPage);
     </script>
 </body>
 </html>
