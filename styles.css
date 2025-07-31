@@ -199,6 +199,37 @@ body {
     text-align: center;
 }
 
+/* YouTube動画レスポンシブ対応 */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .demo-video {
+        padding: 30px 20px;
+    }
+    
+    .video-container {
+        max-width: 100%;
+    }
+}
+
 .video-placeholder {
     background-color: #333333;
     border-radius: 8px;
@@ -1094,6 +1125,76 @@ body {
     resize: vertical;
     min-height: 140px;
     font-family: inherit;
+}
+
+/* デモ情報セクション */
+.demo-info {
+    margin-bottom: 32px;
+}
+
+.demo-highlight {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    border: 2px solid #00A99D;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.demo-highlight h4 {
+    color: #00A99D;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.demo-highlight p {
+    margin-bottom: 16px;
+    color: #4B5563;
+}
+
+.demo-features {
+    list-style: none;
+    margin-bottom: 16px;
+}
+
+.demo-features li {
+    padding: 8px 0;
+    color: #374151;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.demo-features li:last-child {
+    border-bottom: none;
+}
+
+.demo-note {
+    font-size: 14px;
+    color: #6B7280;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* フォームレイアウト - PC向け最適化 */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+    }
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+.required {
+    color: #EF4444;
 }
 
 .form-submit-btn {
