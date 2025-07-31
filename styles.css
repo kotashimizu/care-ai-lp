@@ -1217,11 +1217,19 @@ body {
     box-shadow: 0 8px 25px rgba(26, 43, 76, 0.3);
 }
 
-/* Thank You Section */
+/* Thank You Section - Fixed overlay */
 .thank-you {
-    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
-    padding: 80px 0;
-    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .thank-you-content {
